@@ -1,10 +1,42 @@
 package tokenizer
 
+/*
+	Check the Top of the Stack.
+	case stack = empty:
+		push the nextByte
+		recur
+	case top of stack is number:
+		if nextByte == number or decimalpoint
+			push
+			recur
+		else
+			append intConst token
+			end
+	case top of stack is deicmal point:
+		if nextByte == number
+			push
+			recur
+		else
+			append intConst token
+			end
+	case top of stack is quotion mark:
+		if nextByte != quotation mark
+			push
+			recur
+		else
+			append StringConst token
+			end
+	case top of stack is letter:
+*/
 import (
 	//"bufio"
 	//"strings"
 	//"fmt"
+
+	"fmt"
+	"io"
 	"os"
+
 	//"unicode/utf8"
 	"github.com/golang-collections/collections/stack"
 )
@@ -28,13 +60,19 @@ var ClassMap map[int]string = map[int]string{
 }
 
 const (
+	NULL     byte = 0
 	SPACE    byte = 32
 	F_SLASH  byte = 47
 	NEW_LINE byte = 10
 	TAB      byte = 9
 	INT_ZERO byte = 48
-	INT_NINE byte = 56
+	INT_NINE byte = 57
 	POINT    byte = 46
+	QUOTE    byte = 34
+	CAP_A    byte = 65
+	CAP_Z    byte = 90
+	LOW_A    byte = 97
+	LOW_Z    byte = 122
 )
 
 func check(e error) {
@@ -49,119 +87,122 @@ type Token struct {
 }
 
 type Reader struct {
-	Tokens      []Token
-	File        *os.File
-	CurrentByte int
+	Tokens     []Token
+	File       *os.File
+	ByteOffset int64 // the ByteOffset used, for os.ReadAt, tracks current position in file
+	HasMore    bool
 }
 
-func (r *Reader) Advance() (Token, error) {
-	var t Token = Token{None, make([]byte, 0)}
-	var valueStack *stack.Stack = stack.New()
-	return t, rAdvance(r, &t, valueStack)
-}
+func (r *Reader) Advance() error {
+	var stack *stack.Stack = stack.New()
+	var token Token
+	var buff []byte = make([]byte, 1)
+	var tokenFound bool = false
+	fmt.Println("Token Search Loop")
+	for !tokenFound {
 
-func rAdvance(r *Reader, token *Token, stack *stack.Stack) error {
-	b := make([]byte, 1) // create byte array to store n=1 amonut of bytes
-	_, err := r.File.ReadAt(b, int64(r.CurrentByte))
-	if err != nil {
-		return err
-	}
-	// byte read from file
-	nextByte := b[0]
-	// DEBUG
-	//fmt.Println(nextByte)
-	// Debug
-	//ddinput, _ := utf8.DecodeRune(b)
-	//fmt.Printf("%x", b[0])
-	//fmt.Print("\n\t")
-	// Base Case
-	peeked := stack.Peek()
-	//fmt.Println(stack)
-	if peeked == nil { // empty stack
-		stack.Push(nextByte)
-		r.CurrentByte += 1
-		return rAdvance(r, token, stack)
-	} else if peeked.(byte) >= INT_ZERO && peeked.(byte) <= INT_NINE { // peeked == number
-		if nextByte >= INT_ZERO && nextByte <= INT_NINE || nextByte == POINT { //nextByte == number || point
-			stack.Push(nextByte)
-			r.CurrentByte += 1
-			return rAdvance(r, token, stack)
-		} else { // create a return token
-			temp := stack.Pop()
-			for temp != nil {
-				token.Value = append(token.Value, temp.(byte))
-				temp = stack.Pop()
-			}
-			token.Class = IntConst
-			r.Tokens = append(r.Tokens, *token)
-
-			//Debug
-			//fmt.Println()
-			//return nil
-		}
-	} else if peeked.(byte) == POINT {
-		if nextByte == POINT || (nextByte > INT_NINE && nextByte < INT_ZERO) {
-			panic("syntax error, double or trailling decimal point")
-		} else if nextByte >= INT_ZERO && nextByte <= INT_NINE {
-			stack.Push(nextByte)
-			r.CurrentByte += 1
-			return rAdvance(r, token, stack)
-		} else {
-			temp := stack.Pop()
-			for temp != nil {
-				token.Value = append(token.Value, temp.(byte))
-				temp = stack.Pop()
-			}
-			token.Class = IntConst
-			r.Tokens = append(r.Tokens, *token)
-		}
-	}
-	// Debug
-	//fmt.Println()
-	return nil
-}
-
-/*
-func (r *Reader) rAdvance() ( error ){
-	b := make([]byte, 1)
-	s :=  stack.New()
-	_, err := r.File.Read(b)
-	if err != nil{
-		return err
-	}
-	/*v, _ := utf8.DecodeRune(b)
-	fmt.Print(v)
-	fmt.Print(" : ")
-	// check space
-	val := b[0]
-	if val == SPACE || val == NEW_LINE || val == TAB {
-		return r.Advance()
-	}
-	// check number
-	if ((val >= INT_ZERO && val <= INT_NINE) || val == POINT){
-		s.Push(val)
-
-	}
-	/*else if val == F_SLASH {
-		temp := make([]byte, 1)
-		_, err := r.File.ReadAt(temp, int64(r.CurrentByte + 1))
+		// read from stream
+		_, err := r.File.ReadAt(buff, r.ByteOffset)
 		if err != nil {
-			return err
-		}
-		if(temp[0] == F_SLASH){
-			for val != NEW_LINE {
-				_, err := r.File.Read(b)
-				if err != nil {
-					return err
-				}
-				val = b[0]
-				r.CurrentByte += 1
+			if err == io.EOF {
+				r.HasMore = false
+				fmt.Println()
+				return nil
 			}
-			return r.Advance()
+			panic(err)
+		}
+		// label input from stream
+		var nextByte byte = buff[0]
+		var nextByteIsNumeric bool = nextByte >= INT_ZERO && nextByte <= INT_NINE
+		var nextByteIsPoint bool = nextByte == POINT
+		peek := stack.Peek() //Note: I can't assign peek to byte becuase an empty stack returns nil and not 0. This mean I need to assert the byte type in all other comparisons
+		// loop through input for a known class
+		if peek == nil {
+			fmt.Println("\t\tstack is empty")
+			// dont push SPACE onto stack
+			if nextByte != SPACE && nextByte != NEW_LINE && nextByte != TAB {
+				fmt.Printf("\t\t\tpush %d\n", nextByte)
+				stack.Push(nextByte)
+			}
+			r.ByteOffset += 1
+		} else {
+			fmt.Println("\t\tstack is not-empty")
+			var peekIsNumeric bool = peek.(byte) >= INT_ZERO && peek.(byte) <= INT_NINE
+			var peekIsPoint bool = peek.(byte) == POINT
+			var peekIsQuote bool = peek.(byte) == QUOTE
+			if peekIsNumeric {
+				fmt.Println("\t\t\tpeek == numeric")
+				if nextByteIsNumeric || nextByteIsPoint {
+					fmt.Printf("\t\t\tpush %d\n", nextByte)
+					stack.Push(nextByte)
+					r.ByteOffset += 1
+				} else { // populate the token
+					fmt.Println("\t\t\tload token")
+					count := stack.Len()
+					for count > 0 {
+						val := stack.Pop().(byte)
+						fmt.Printf("\t\t\tpop %d\n", val)
+						token.Value = append(token.Value, val)
+						count--
+					}
+					token.Class = IntConst
+					tokenFound = true
+				}
+			} else if peekIsPoint {
+				fmt.Println("\t\t\tpeek == point")
+				if !nextByteIsNumeric {
+					panic("double or trailing decimal point")
+				} else {
+					fmt.Printf("\t\t\t\tpush %d\n", nextByte)
+					stack.Push(nextByte)
+					r.ByteOffset += 1
+				}
+			} else if peekIsQuote {
+				fmt.Println("\t\t\tpeek == quote")
+				if nextByte == QUOTE {
+					//empty string
+					r.ByteOffset += 1
+					fmt.Printf("\t\t\t\tpop %d\n", stack.Pop())
+					token.Class = StrConst
+					token.Value = append(token.Value, NULL)
+				} else {
+					for nextByte != QUOTE {
+						// read from stream
+						_, err := r.File.ReadAt(buff, r.ByteOffset)
+						if err != nil {
+							if err == io.EOF {
+								r.HasMore = false
+								return nil
+							}
+							panic(err)
+						}
+						// label input from stream
+						nextByte = buff[0]
+						fmt.Printf("\t\t\t\tpush %d\n", nextByte)
+						stack.Push(nextByte)
+						r.ByteOffset += 1
+					}
+					// load token
+					fmt.Println("\t\t\tload token")
+					fmt.Printf("\t\t\t\tpop %d\n", stack.Pop()) // pop starting quote
+					count := stack.Len() - 1                    // go until quote
+					for count > 0 {
+						val := stack.Pop().(byte)
+						fmt.Printf("\t\t\t\tpop %d\n", val)
+						token.Value = append(token.Value, val)
+						count--
+					}
+					fmt.Printf("\t\t\t\tpop %d\n", stack.Pop()) // Pop last quote
+					token.Class = StrConst
+					tokenFound = true
+				}
+
+			}
 		}
 	}
-	//classify(b[0])
-	r.Tokens = append(r.Tokens, Token{0, b[0]})
-	r.CurrentByte += 1
+	fmt.Print("Adding token to list : ")
+	fmt.Println(token)
+	fmt.Println()
+	r.Tokens = append(r.Tokens, token)
 	return nil
-}*/
+}

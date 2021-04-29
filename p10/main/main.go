@@ -7,28 +7,35 @@ import (
 )
 
 func main() {
-	src := "../lib/number.jack"
+	src := "../lib/stringnumber.jack"
 	file, err := os.Open(src)
 	if err != nil {
 		panic(err)
 	}
-	t := tokenizer.Reader{make([]tokenizer.Token, 0), file, 0}
-	var hasMore = true
+
+	t := tokenizer.Reader{make([]tokenizer.Token, 0), file, 0, true}
+
+	for t.HasMore {
+		err := t.Advance()
+		if err != nil {
+			panic(err)
+		}
+	}
+
+	/*var hasMore = true
 	for hasMore {
 		_, err := t.Advance()
 		if err != nil {
 			hasMore = false
 		}
-	}
+	}*/
 	for i := range t.Tokens {
-		fmt.Print("<")
-		fmt.Print(tokenizer.ClassMap[t.Tokens[i].Class])
-		fmt.Print("> ")
-		fmt.Print(t.Tokens[i].Value)
-		fmt.Print("<")
-		fmt.Print(tokenizer.ClassMap[t.Tokens[i].Class])
-		fmt.Print("> ")
+		fmt.Printf("<%s> ", tokenizer.ClassMap[t.Tokens[i].Class])
+		j := len(t.Tokens[i].Value) - 1
+		for j >= 0 {
+			fmt.Print(string(t.Tokens[i].Value[j]))
+			j--
+		}
 		fmt.Println()
 	}
-	//fmt.Println(t.Tokens)
 }
