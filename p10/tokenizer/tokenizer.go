@@ -9,7 +9,7 @@ import (
 	"github.com/golang-collections/collections/stack"
 )
 
-const(
+const (
 	Keyword = -(iota + 1)
 	Symbol
 	IntConst
@@ -18,43 +18,54 @@ const(
 	None
 )
 
-const(
-	SPACE byte = 32
-	F_SLASH byte = 47
+var ClassMap map[int]string = map[int]string{
+	Keyword:    "Keyword",
+	Symbol:     "Symbol",
+	IntConst:   "Integer Constant",
+	StrConst:   "String Constant",
+	Identifier: "Identifier",
+	None:       "None",
+}
+
+const (
+	SPACE    byte = 32
+	F_SLASH  byte = 47
 	NEW_LINE byte = 10
-	TAB byte = 9
+	TAB      byte = 9
 	INT_ZERO byte = 48
 	INT_NINE byte = 56
-	POINT byte = 46
+	POINT    byte = 46
 )
 
-func check(e error){
+func check(e error) {
 	if e != nil {
 		panic(e)
 	}
 }
 
-type Token struct{
+type Token struct {
 	Class int
 	Value []byte
 }
 
-type Reader struct{
-	Tokens []Token
-	File  *os.File
+type Reader struct {
+	Tokens      []Token
+	File        *os.File
 	CurrentByte int
 }
 
-func (r *Reader) Advance() ( Token, error){
+func (r *Reader) Advance() (Token, error) {
 	var t Token = Token{None, make([]byte, 0)}
 	var valueStack *stack.Stack = stack.New()
 	return t, rAdvance(r, &t, valueStack)
 }
 
-func rAdvance(r *Reader, token *Token, stack *stack.Stack) ( error ){
-	b :=  make([]byte, 1) // create byte array to store n=1 amonut of bytes
+func rAdvance(r *Reader, token *Token, stack *stack.Stack) error {
+	b := make([]byte, 1) // create byte array to store n=1 amonut of bytes
 	_, err := r.File.ReadAt(b, int64(r.CurrentByte))
-	if err != nil { return err }
+	if err != nil {
+		return err
+	}
 	// byte read from file
 	nextByte := b[0]
 	// DEBUG
@@ -66,12 +77,12 @@ func rAdvance(r *Reader, token *Token, stack *stack.Stack) ( error ){
 	// Base Case
 	peeked := stack.Peek()
 	//fmt.Println(stack)
-	if ( peeked == nil ){ // empty stack
+	if peeked == nil { // empty stack
 		stack.Push(nextByte)
 		r.CurrentByte += 1
 		return rAdvance(r, token, stack)
-	} else if ( peeked.(byte) >= INT_ZERO && peeked.(byte) <= INT_NINE) { // peeked == number
-		if( nextByte >=  INT_ZERO && nextByte <= INT_NINE || nextByte == POINT){ //nextByte == number || point
+	} else if peeked.(byte) >= INT_ZERO && peeked.(byte) <= INT_NINE { // peeked == number
+		if nextByte >= INT_ZERO && nextByte <= INT_NINE || nextByte == POINT { //nextByte == number || point
 			stack.Push(nextByte)
 			r.CurrentByte += 1
 			return rAdvance(r, token, stack)
@@ -81,15 +92,17 @@ func rAdvance(r *Reader, token *Token, stack *stack.Stack) ( error ){
 				token.Value = append(token.Value, temp.(byte))
 				temp = stack.Pop()
 			}
+			token.Class = IntConst
 			r.Tokens = append(r.Tokens, *token)
+
 			//Debug
 			//fmt.Println()
 			//return nil
 		}
-	} else if (peeked.(byte) == POINT) {
-		if( nextByte == POINT || (nextByte > INT_NINE && nextByte < INT_ZERO)){
-			panic("syntax error: double or trailling decimal point")
-		} else if (nextByte >= INT_ZERO && nextByte <= INT_NINE){
+	} else if peeked.(byte) == POINT {
+		if nextByte == POINT || (nextByte > INT_NINE && nextByte < INT_ZERO) {
+			panic("syntax error, double or trailling decimal point")
+		} else if nextByte >= INT_ZERO && nextByte <= INT_NINE {
 			stack.Push(nextByte)
 			r.CurrentByte += 1
 			return rAdvance(r, token, stack)
@@ -99,6 +112,7 @@ func rAdvance(r *Reader, token *Token, stack *stack.Stack) ( error ){
 				token.Value = append(token.Value, temp.(byte))
 				temp = stack.Pop()
 			}
+			token.Class = IntConst
 			r.Tokens = append(r.Tokens, *token)
 		}
 	}
@@ -151,6 +165,3 @@ func (r *Reader) rAdvance() ( error ){
 	r.CurrentByte += 1
 	return nil
 }*/
-
-
-
