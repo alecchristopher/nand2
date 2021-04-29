@@ -1,0 +1,6 @@
+// asdf
+	
+if (x < 0) {
+	// prints the sign 
+	let sign = "negative";
+}
