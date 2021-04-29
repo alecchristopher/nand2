@@ -81,6 +81,7 @@ const (
 	CAP_Z    byte = 90
 	LOW_A    byte = 97
 	LOW_Z    byte = 122
+	UND      byte = 95
 )
 
 func check(e error) {
@@ -130,6 +131,8 @@ func (r *Reader) Advance() error {
 			if nextByte != SPACE && nextByte != NEW_LINE && nextByte != TAB {
 				fmt.Printf("\t\t\tpush %d\n", nextByte)
 				stack.Push(nextByte)
+			} else {
+				fmt.Printf("\t\t\tskip space %d\n", nextByte)
 			}
 			r.ByteOffset += 1
 		} else {
@@ -138,6 +141,7 @@ func (r *Reader) Advance() error {
 			var peekIsQuote bool = peek.(byte) == QUOTE
 			var peekIsSymbol bool = false
 			var peekIsLetter bool = peek.(byte) >= CAP_A && peek.(byte) <= CAP_Z || peek.(byte) >= LOW_A && peek.(byte) <= LOW_Z
+			var peekIsUnderScore bool = peek.(byte) == UND
 			for i := range knownSymols {
 				if knownSymols[i] == peek.(byte) {
 					peekIsSymbol = true
@@ -209,11 +213,20 @@ func (r *Reader) Advance() error {
 				token.Value = append(token.Value, val.(byte))
 				token.Class = Symbol
 				tokenFound = true
-			} else if peekIsLetter {
+			} else if peekIsLetter || peekIsUnderScore {
 				var nextByteIsLetter bool = nextByte >= CAP_A && nextByte <= CAP_Z || nextByte >= LOW_A && nextByte <= LOW_Z
-				for nextByteIsLetter { // look for a keyword
+				var nextByteIsUnderScore bool = nextByte == UND
+				var nextByteIsSymbol bool
+				for i := range knownSymols {
+					if knownSymols[i] == peek.(byte) {
+						nextByteIsSymbol = true
+					}
+				}
+				// push every byte until a symbol or
+				for (nextByteIsLetter || nextByteIsUnderScore) || (!nextByteIsSymbol && nextByte != SPACE && nextByte != NEW_LINE && nextByte != TAB) { // look for a word
 					fmt.Printf("\t\t\t\tpush %d\n", nextByte)
 					stack.Push(nextByte)
+					r.ByteOffset += 1
 					// read from stream
 					_, err := r.File.ReadAt(buff, r.ByteOffset)
 					if err != nil {
@@ -226,8 +239,30 @@ func (r *Reader) Advance() error {
 					// label input from stream
 					nextByte = buff[0]
 					nextByteIsLetter = nextByte >= CAP_A && nextByte <= CAP_Z || nextByte >= LOW_A && nextByte <= LOW_Z
-					r.ByteOffset += 1
+					nextByteIsUnderScore = nextByte == UND
+					for i := range knownSymols {
+						if knownSymols[i] == peek.(byte) {
+							nextByteIsSymbol = true
+						} else {
+							nextByteIsSymbol = false
+						}
+					}
+					fmt.Printf("\t\t\t\tnext byte %d\n", nextByte)
+					//r.ByteOffset += 1
 				}
+				// load token
+				fmt.Println("\t\t\tload token")
+				count := stack.Len() // go until quote
+				for count > 0 {
+					val := stack.Pop().(byte)
+					fmt.Printf("\t\t\t\tpop %d\n", val)
+					token.Value = append(token.Value, val)
+					count--
+				}
+				token.Class = StrConst // cant say yet
+				tokenFound = true
+				// classify if found string is keyword or identifier
+
 			}
 		}
 	}

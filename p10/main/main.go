@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	src := "../lib/symbol.jack"
+	src := "../lib/key.jack"
 	file, err := os.Open(src)
 	if err != nil {
 		panic(err)
