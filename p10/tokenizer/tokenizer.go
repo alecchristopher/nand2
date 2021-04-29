@@ -50,6 +50,14 @@ const (
 	None
 )
 
+var knownSymols []byte = []byte{
+	123, 125, // {, }
+	40, 41, // (, )
+	91, 93, // [, ]
+	46, 44, 59, 43, 45, 42, 47, 38, // ., ',', ;, +, -, *, /, &
+	124, 60, 62, 61, 126, // |, <, >, =, ~
+}
+
 var ClassMap map[int]string = map[int]string{
 	Keyword:    "Keyword",
 	Symbol:     "Symbol",
@@ -114,7 +122,6 @@ func (r *Reader) Advance() error {
 		// label input from stream
 		var nextByte byte = buff[0]
 		var nextByteIsNumeric bool = nextByte >= INT_ZERO && nextByte <= INT_NINE
-		var nextByteIsPoint bool = nextByte == POINT
 		peek := stack.Peek() //Note: I can't assign peek to byte becuase an empty stack returns nil and not 0. This mean I need to assert the byte type in all other comparisons
 		// loop through input for a known class
 		if peek == nil {
@@ -128,11 +135,18 @@ func (r *Reader) Advance() error {
 		} else {
 			fmt.Println("\t\tstack is not-empty")
 			var peekIsNumeric bool = peek.(byte) >= INT_ZERO && peek.(byte) <= INT_NINE
-			var peekIsPoint bool = peek.(byte) == POINT
 			var peekIsQuote bool = peek.(byte) == QUOTE
+			var peekIsSymbol bool = false
+			var peekIsLetter bool = peek.(byte) >= CAP_A && peek.(byte) <= CAP_Z || peek.(byte) >= LOW_A && peek.(byte) <= LOW_Z
+			for i := range knownSymols {
+				if knownSymols[i] == peek.(byte) {
+					peekIsSymbol = true
+				}
+			}
+
 			if peekIsNumeric {
 				fmt.Println("\t\t\tpeek == numeric")
-				if nextByteIsNumeric || nextByteIsPoint {
+				if nextByteIsNumeric {
 					fmt.Printf("\t\t\tpush %d\n", nextByte)
 					stack.Push(nextByte)
 					r.ByteOffset += 1
@@ -147,15 +161,6 @@ func (r *Reader) Advance() error {
 					}
 					token.Class = IntConst
 					tokenFound = true
-				}
-			} else if peekIsPoint {
-				fmt.Println("\t\t\tpeek == point")
-				if !nextByteIsNumeric {
-					panic("double or trailing decimal point")
-				} else {
-					fmt.Printf("\t\t\t\tpush %d\n", nextByte)
-					stack.Push(nextByte)
-					r.ByteOffset += 1
 				}
 			} else if peekIsQuote {
 				fmt.Println("\t\t\tpeek == quote")
@@ -196,7 +201,33 @@ func (r *Reader) Advance() error {
 					token.Class = StrConst
 					tokenFound = true
 				}
-
+			} else if peekIsSymbol {
+				fmt.Println("\t\t\tpeek == symbol")
+				fmt.Println("\t\t\tload token")
+				val := stack.Pop()
+				fmt.Printf("\t\t\t\tpop %d\n", val)
+				token.Value = append(token.Value, val.(byte))
+				token.Class = Symbol
+				tokenFound = true
+			} else if peekIsLetter {
+				var nextByteIsLetter bool = nextByte >= CAP_A && nextByte <= CAP_Z || nextByte >= LOW_A && nextByte <= LOW_Z
+				for nextByteIsLetter { // look for a keyword
+					fmt.Printf("\t\t\t\tpush %d\n", nextByte)
+					stack.Push(nextByte)
+					// read from stream
+					_, err := r.File.ReadAt(buff, r.ByteOffset)
+					if err != nil {
+						if err == io.EOF {
+							r.HasMore = false
+							return nil
+						}
+						panic(err)
+					}
+					// label input from stream
+					nextByte = buff[0]
+					nextByteIsLetter = nextByte >= CAP_A && nextByte <= CAP_Z || nextByte >= LOW_A && nextByte <= LOW_Z
+					r.ByteOffset += 1
+				}
 			}
 		}
 	}

@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	src := "../lib/stringnumber.jack"
+	src := "../lib/symbol.jack"
 	file, err := os.Open(src)
 	if err != nil {
 		panic(err)
@@ -29,6 +29,7 @@ func main() {
 			hasMore = false
 		}
 	}*/
+
 	for i := range t.Tokens {
 		fmt.Printf("<%s> ", tokenizer.ClassMap[t.Tokens[i].Class])
 		j := len(t.Tokens[i].Value) - 1
