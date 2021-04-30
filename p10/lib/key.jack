@@ -1,1 +1,6 @@
-a "b" _cd 10 
+Class Bar {
+   method Fraction foo(int y) {
+      var int temp;
+      let temp = (xxx+12)*-63;
+   }
+}

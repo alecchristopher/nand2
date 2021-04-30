@@ -1,0 +1,457 @@
+Token Search Loop
+		stack is empty
+			push 67
+		stack is not-empty
+				push 108
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 97
+				push 97
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 115
+				push 115
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 115
+				push 115
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 32
+			load token
+				pop 115
+				pop 115
+				pop 97
+				pop 108
+				pop 67
+Adding token to list : ssalC
+{-5 [115 115 97 108 67]}
+
+Token Search Loop
+		stack is empty
+			skip space 32
+		stack is empty
+			push 66
+		stack is not-empty
+				push 97
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 114
+				push 114
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 32
+			load token
+				pop 114
+				pop 97
+				pop 66
+Adding token to list : raB
+{-5 [114 97 66]}
+
+Token Search Loop
+		stack is empty
+			skip space 32
+		stack is empty
+			push 123
+		stack is not-empty
+			peek == symbol
+			load token
+				pop 123
+Adding token to list : {
+{-2 [123]}
+
+Token Search Loop
+		stack is empty
+			skip space 13
+		stack is empty
+			skip space 10
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			push 109
+		stack is not-empty
+				push 101
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 116
+				push 116
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 104
+				push 104
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 111
+				push 111
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 100
+				push 100
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 32
+			load token
+				pop 100
+				pop 111
+				pop 104
+				pop 116
+				pop 101
+				pop 109
+Adding token to list : dohtem
+{-5 [100 111 104 116 101 109]}
+
+Token Search Loop
+		stack is empty
+			skip space 32
+		stack is empty
+			push 70
+		stack is not-empty
+				push 114
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 97
+				push 97
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 99
+				push 99
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 116
+				push 116
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 105
+				push 105
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 111
+				push 111
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 110
+				push 110
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 32
+			load token
+				pop 110
+				pop 111
+				pop 105
+				pop 116
+				pop 99
+				pop 97
+				pop 114
+				pop 70
+Adding token to list : noitcarF
+{-5 [110 111 105 116 99 97 114 70]}
+
+Token Search Loop
+		stack is empty
+			skip space 32
+		stack is empty
+			push 102
+		stack is not-empty
+				push 111
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 111
+				push 111
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 40
+				push 40
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 105
+				push 105
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 110
+				push 110
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 116
+				push 116
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 32
+			load token
+				pop 116
+				pop 110
+				pop 105
+				pop 40
+				pop 111
+				pop 111
+				pop 102
+Adding token to list : tni(oof
+{-5 [116 110 105 40 111 111 102]}
+
+Token Search Loop
+		stack is empty
+			skip space 32
+		stack is empty
+			push 121
+		stack is not-empty
+				push 41
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 32
+			load token
+				pop 41
+				pop 121
+Adding token to list : )y
+{-5 [41 121]}
+
+Token Search Loop
+		stack is empty
+			skip space 32
+		stack is empty
+			push 123
+		stack is not-empty
+			peek == symbol
+			load token
+				pop 123
+Adding token to list : {
+{-2 [123]}
+
+Token Search Loop
+		stack is empty
+			skip space 13
+		stack is empty
+			skip space 10
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			push 118
+		stack is not-empty
+				push 97
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 114
+				push 114
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 32
+			load token
+				pop 114
+				pop 97
+				pop 118
+Adding token to list : rav
+{-1 [114 97 118]}
+
+Token Search Loop
+		stack is empty
+			skip space 32
+		stack is empty
+			push 105
+		stack is not-empty
+				push 110
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 116
+				push 116
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 32
+			load token
+				pop 116
+				pop 110
+				pop 105
+Adding token to list : tni
+{-1 [116 110 105]}
+
+Token Search Loop
+		stack is empty
+			skip space 32
+		stack is empty
+			push 116
+		stack is not-empty
+				push 101
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 109
+				push 109
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 112
+				push 112
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 59
+				push 59
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 13
+				push 13
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 10
+			load token
+				pop 13
+				pop 59
+				pop 112
+				pop 109
+				pop 101
+				pop 116
+Adding token to list : ;pmet
+{-5 [13 59 112 109 101 116]}
+
+Token Search Loop
+		stack is empty
+			skip space 10
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			push 108
+		stack is not-empty
+				push 101
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 116
+				push 116
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 32
+			load token
+				pop 116
+				pop 101
+				pop 108
+Adding token to list : tel
+{-1 [116 101 108]}
+
+Token Search Loop
+		stack is empty
+			skip space 32
+		stack is empty
+			push 116
+		stack is not-empty
+				push 101
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 109
+				push 109
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 112
+				push 112
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 32
+			load token
+				pop 112
+				pop 109
+				pop 101
+				pop 116
+Adding token to list : pmet
+{-5 [112 109 101 116]}
+
+Token Search Loop
+		stack is empty
+			skip space 32
+		stack is empty
+			push 61
+		stack is not-empty
+			peek == symbol
+			load token
+				pop 61
+Adding token to list : =
+{-2 [61]}
+
+Token Search Loop
+		stack is empty
+			skip space 32
+		stack is empty
+			push 40
+		stack is not-empty
+			peek == symbol
+			load token
+				pop 40
+Adding token to list : (
+{-2 [40]}
+
+Token Search Loop
+		stack is empty
+			push 120
+		stack is not-empty
+				push 120
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 120
+				push 120
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 43
+				push 43
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 49
+				push 49
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 50
+				push 50
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 41
+				push 41
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 42
+				push 42
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 45
+				push 45
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 54
+				push 54
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 51
+				push 51
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 59
+				push 59
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 13
+				push 13
+FOR LOOP - FOR LOOP - 123FOR LOOP - 125FOR LOOP - 40FOR LOOP - 41FOR LOOP - 91FOR LOOP - 93FOR LOOP - 46FOR LOOP - 44FOR LOOP - 59FOR LOOP - 43FOR LOOP - 45FOR LOOP - 42FOR LOOP - 47FOR LOOP - 38FOR LOOP - 124FOR LOOP - 60FOR LOOP - 62FOR LOOP - 61FOR LOOP - 126				next byte is symbol %!s(bool=false)
+				next byte 10
+			load token
+				pop 13
+				pop 59
+				pop 51
+				pop 54
+				pop 45
+				pop 42
+				pop 41
+				pop 50
+				pop 49
+				pop 43
+				pop 120
+				pop 120
+				pop 120
+Adding token to list : ;36-*)21+xxx
+{-5 [13 59 51 54 45 42 41 50 49 43 120 120 120]}
+
+Token Search Loop
+		stack is empty
+			skip space 10
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			skip space 32
+		stack is empty
+			push 125
+		stack is not-empty
+			peek == symbol
+			load token
+				pop 125
+Adding token to list : }
+{-2 [125]}
+
+Token Search Loop
+		stack is empty
+			skip space 13
+		stack is empty
+			skip space 10
+		stack is empty
+			push 125
+
+<Identifier> Class
+<Identifier> Bar
+<Symbol> {
+<Identifier> method
+<Identifier> Fraction
+<Identifier> foo(int
+<Identifier> y)
+<Symbol> {
+<Keyword> var
+<Keyword> int
+<Identifier> temp;
+<Keyword> let
+<Identifier> temp
+<Symbol> =
+<Symbol> (
+<Identifier> xxx+12)*-63;
+<Symbol> }
