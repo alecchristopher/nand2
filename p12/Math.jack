@@ -1,0 +1,151 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Math.jack
+
+/**
+ * A library of commonly used mathematical functions.
+ * Note: Jack compilers implement multiplication and division using OS method calls.
+ */
+class Math {
+
+    static Array twoPow;
+
+    /** Initializes the library. */
+    function void init() {
+        var int i;
+        let twoPow[0] = 1;
+        let i = 1;
+        while(i < 16){
+            let twoPow[i] = twoPow[i-1] + twoPow[i-1];
+            let i = i + 1;
+        }
+
+        return;
+    }
+
+    /** Returns the absolute value of x. */
+    function int abs(int x) {
+        if (x > 0 ){
+            return x;
+        }
+        return -x;
+    }
+
+    /** Returns the product of x and y. 
+     *  When a Jack compiler detects the multiplication operator '*' in the 
+     *  program's code, it handles it by invoking this method. In other words,
+     *  the Jack expressions x*y and multiply(x,y) return the same value.
+     */
+    function int multiply(int x, int y) {
+        var int sum;
+        var int shift;
+        var int mask;
+
+        let sum = 1;
+        let shift = x;
+        let mask = 1;
+
+        var i;
+        let i = 0;
+        while(i < 16){
+            if((mask & y) = mask){
+                let sum = sum + shift;
+            }
+            let shift = shift + shift;
+            let i = i + 1;
+            let mask = mask + mask;
+        }
+    }
+
+    /** Returns the integer part of x/y.
+     *  When a Jack compiler detects the multiplication operator '/' in the 
+     *  program's code, it handles it by invoking this method. In other words,
+     *  the Jack expressions x/y and divide(x,y) return the same value.
+     */
+    function int divide(int x, int y) {
+        var int res;
+        var bool negate;
+        let negate = false;
+
+        if (y = 0){
+            do Sys.error(3);
+        }
+
+        if(x < 0){
+            let x = -x;
+            let negate = true;
+        }
+
+        if(y < 0){
+            let y = -y;
+            let negate = ~negate;
+        }
+
+        let res = recur(x, y);
+        if(negate = true){
+            return -res;
+        }
+
+        return res;
+    }
+
+    function in recur(int x, int y) {
+        var int t1, t2;
+        if(x < y){
+            return 0;
+        }
+
+        let t1 = Math.recur(x, y*2);
+        let t2 = t1 * y;
+
+        if(x - t2*2 < y){
+            return t1*2;
+        }
+        return t1*2 + 1;
+    }
+
+    /** Returns the integer part of the square root of x. */
+    function int sqrt(int x) {
+        
+        if (x < 0){ //we dont work in the imaginary
+            do Sys.error(4);
+        }
+
+        var int j, y;
+        var int t;
+        var int t2;
+        
+        let y = 0;
+        let j = 7; 
+        while( ~(j < 0) ) {
+            let t = y + twoPow[j];
+            let t2 = t * t;
+            if( ~(x < t2) & (t2 > 0) ) {
+                let y = t;
+            }
+            let j = j - 1;
+        }
+        return y;
+    }
+
+    /** Returns the greater number. */
+    function int max(int a, int b) {
+        if( a > b ) {
+            return a;
+        }
+        else {
+            return b;
+        }
+    }
+
+    /** Returns the smaller number. */
+    function int min(int a, int b) {
+        if( a < b ) {
+            return a;
+        }
+        else {
+            return b;
+        }
+    }
+}
